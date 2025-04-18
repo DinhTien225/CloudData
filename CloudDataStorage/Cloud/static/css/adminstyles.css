@@ -1,0 +1,985 @@
+/* Reset Body Margin and Padding */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Đảm bảo chiều cao của body luôn bằng chiều cao cửa sổ */
+    overflow-x: hidden; /* Ngăn cuộn ngang */
+    width: 100%; /* Đảm bảo body không vượt quá chiều rộng màn hình */
+}
+
+/* Header */
+header.navbar {
+    background-color: #2a2a72;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+header.navbar .menu {
+    display: flex;
+    justify-content: center;
+}
+
+header.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+header.navbar .menu a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+/* Main Content */
+.main-container {
+    flex: 1;
+    min-height: 800px; /* Tăng chiều cao tối thiểu */
+    padding: 100px; /* Tăng padding để tạo không gian rộng hơn */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu cần */
+    background-color: #f0f0f0; /* Màu nền nhẹ cho nội dung */
+    box-sizing: border-box; /* Đảm bảo padding không gây thêm chiều cao */
+    overflow: visible; /* Cho phép cuộn dọc nếu nội dung lớn hơn */
+    background-image: linear-gradient(135deg, #e0e0e0, #f5f5f5); /* Tạo hiệu ứng gradient nền */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tạo bóng đổ cho trang */
+}
+
+/* Sidebar Menu */
+.admin-menu {
+    background-color: #fff;
+    padding: 6rem; /* Tăng padding của sidebar */
+    width: 700px; /* Tăng chiều rộng của sidebar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Làm mờ bóng đổ mạnh hơn */
+    border-radius: 12px; /* Góc bo tròn mềm mại hơn */
+    position: sticky;
+    top: 20px;
+    margin: 0 auto; /* Căn giữa sidebar trong phần chứa */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Đảm bảo các phần tử trong sidebar không bị kéo giãn */
+    align-items: flex-start; /* Căn lề trái cho các mục */
+    min-height: 100%; /* Đảm bảo sidebar chiếm hết chiều cao */
+    box-sizing: border-box; /* Đảm bảo không gây thanh cuộn */
+    max-height: calc(100vh - 100px); /* Giới hạn chiều cao của sidebar */
+    border: 1px solid #ddd; /* Thêm border cho sidebar */
+    background-color: #ffffff; /* Màu nền cho sidebar */
+    transition: box-shadow 0.3s ease-in-out; /* Thêm hiệu ứng chuyển động */
+}
+
+/* Sidebar Hover Effect */
+.admin-menu:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng mạnh hơn khi hover */
+}
+
+/* Menu List */
+.menu-list {
+    list-style: none;
+    padding-left: 0;
+    width: 100%; /* Đảm bảo menu chiếm toàn bộ chiều rộng */
+    text-align: left; /* Căn trái các item trong danh sách */
+    margin: 0;
+}
+
+/* Menu Item */
+.menu-item {
+    display: block;
+    padding: 1rem 2rem; /* Thêm padding để menu thoải mái hơn */
+    color: #333;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600; /* Chữ đậm hơn để nổi bật */
+    border-bottom: 2px solid #eee;
+    transition: color 0.3s, padding-left 0.3s, background-color 0.3s;
+    border-radius: 8px; /* Bo góc cho các mục */
+}
+
+.menu-item:hover {
+    color: #0044cc;
+    padding-left: 15px;
+    background-color: #f0f8ff; /* Thêm màu nền nhẹ khi hover */
+}
+
+/* Menu Item Active */
+.menu-item:active {
+    background-color: #cce7ff; /* Tạo hiệu ứng nền khi item đang được nhấn */
+    padding-left: 20px; /* Kéo dài hiệu ứng padding khi nhấn */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #0044cc;
+    color: #fff;
+    margin-top: 2px;
+
+    box-sizing: border-box;
+}
+
+/* Buttons and Links */
+.btn-primary {
+    background-color: #0088cc;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0055a5;
+    transform: translateY(-2px);
+}
+
+/* manage employees*/
+/* Main Content */
+.manage-employees-main-container {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 120px);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+.manage-employees-main-container h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.manage-employees-main-container h1::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background-color: #0984e3;
+    border-radius: 5px;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Input và Button trong form */
+input[type="text"], button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, button:focus {
+    outline: none;
+    border-color: #0984e3;
+}
+
+button {
+    background-color: #0984e3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #74b9ff;
+    transform: translateY(-2px);
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #2d3436;
+    color: white;
+    font-size: 1.1rem;
+}
+
+table td {
+    font-size: 1rem;
+    color: #636e72;
+}
+
+table button {
+    background-color: #dfe6e9;
+    border: none;
+    color: #636e72;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+table button:hover {
+    background-color: #b2bec3;
+    transform: translateY(-2px);
+}
+
+/* Main Content - Thống kê báo cáo */
+.admin-report-main-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 120px); /* Chiếm toàn bộ chiều cao trừ header và footer */
+    box-sizing: border-box;
+}
+
+/* Tiêu đề */
+.admin-report-main-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Form */
+.admin-report-main-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.admin-report-main-container form label {
+    font-size: 1rem;
+    color: #333;
+}
+
+.admin-report-main-container form select,
+.admin-report-main-container form button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.admin-report-main-container form button {
+    background-color: #0088cc;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-report-main-container form button:hover {
+    background-color: #0055a5;
+}
+
+/* Table */
+.report-table {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.report-table th,
+.report-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.report-table th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+}
+
+.report-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* change regulations */
+/* Quy định trang Thay đổi quy định */
+/* Quy định trang Thay đổi quy định */
+/* Quy định trang Thay đổi quy định */
+.admin-regulations-main-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    min-height: calc(100vh - 120px);
+    box-sizing: border-box;
+}
+
+.admin-regulations-main-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.regulations-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.regulations-form:hover {
+    transform: translateY(-5px);
+}
+
+.regulations-form fieldset {
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.regulations-form legend {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #0088cc;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.regulations-form label {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.regulations-form input,
+.regulations-form select {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.regulations-form input:focus,
+.regulations-form select:focus {
+    outline: none;
+    border-color: #0088cc;
+}
+
+.regulations-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.regulations-form th, .regulations-form td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.regulations-form th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #333;
+}
+
+.regulations-form td input {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.regulations-form button {
+    background-color: #0088cc;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.regulations-form button:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+.regulations-form button:active {
+    background-color: #004c85;
+}
+
+.regulations-form table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* ad manage routes*/
+
+/* Nội dung chính */
+.manage-employees-main-container {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+}
+
+.manage-employees-main-container h1 {
+    text-align: center;
+    color: #333;
+
+    margin: 20px 0; /* Tăng khoảng cách trên và dưới */
+    margin-bottom: 200px;
+    font-size: 3em; /* Tăng kích thước chữ nếu cần */
+    line-height: 1.5; /* Đảm bảo khoảng cách dòng hợp lý */
+}
+
+/* Định dạng biểu mẫu tìm kiếm */
+.manage-employees-main-container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Căn giữa theo chiều dọc */
+    margin-bottom: 30px;
+    gap: 25px;  /* Khoảng cách giữa các phần tử */
+    flex-wrap: wrap;  /* Để các phần tử có thể xuống dòng khi cần */
+    width: 100%;  /* Đảm bảo form chiếm toàn bộ chiều rộng */
+    justify-content: center;  /* Căn giữa các phần tử theo chiều ngang */
+}
+
+.manage-employees-main-container input {
+    max-width: 400px;  /* Đặt chiều rộng tối đa cho các input và button */
+    width: 100%;  /* Làm cho các phần tử chiếm toàn bộ chiều rộng có sẵn */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.manage-employees-main-container input:focus {
+    border-color: #007bff;
+}
+
+.manage-employees-main-container button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.manage-employees-main-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Định dạng bảng nhân viên */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+table td {
+    background-color: #fff;
+}
+
+/* Định dạng các nút xóa và sửa */
+
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+form button {
+    padding: 2px 6px; /* Giảm padding */
+    margin: 0 5px; /* Khoảng cách nhỏ giữa các nút */
+    font-size: 12px; /* Kích thước nhỏ */
+    border-radius: 3px; /* Độ bo nhẹ */
+}
+
+form_delete button {
+    background-color: #e3342f; /* Đỏ cho nút xóa */
+    color: white;
+}
+
+form_delete button:hover {
+    background-color: #c82333;
+}
+
+form_change button {
+    background-color: #28a745; /* Xanh lá cho nút sửa */
+    color: white;
+}
+
+form_change button:hover {
+    background-color: #218838;
+}
+
+/* Định dạng nút thêm nhân viên */
+a.btn-primary {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+a.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+.flash-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-message.success {
+    background-color: green;
+    color: white;
+}
+
+.flash-message.error {
+    background-color: red;
+    color: white;
+}
+
+.flash-message.info {
+    background-color: blue;
+    color: white;
+}
+
+.travel-navbar {
+    background-color: #0056b3;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.travel-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.travel-menu .travel-btn-primary {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.travel-add-employee-container {
+    width: 100%;
+    max-width: 1000px; /* Tăng chiều rộng */
+    margin: 60px auto; /* Tăng khoảng cách phía trên/dưới */
+    padding: 40px; /* Tăng khoảng cách bên trong */
+    background-color: #fff;
+    border-radius: 12px; /* Tăng độ bo góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tăng độ đậm của bóng */
+}
+
+.travel-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.travel-employee-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Chiều cao của form để căn giữa dọc */
+    margin: 0 auto; /* Đảm bảo căn giữa form trong container cha */
+
+}
+
+.travel-form-group {
+    margin-bottom: 15px;
+
+}
+
+.travel-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.travel-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.travel-btn-primary {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.travel-btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* styles.css */
+
+
+
+/* Thiết lập chung cho body */
+.custom-body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc; /* Nền màu xám nhạt */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Tiêu đề trang */
+.custom-h1 {
+    text-align: center;
+    color: #3a5a99; /* Xanh dương đậm */
+    margin-top: 40px;
+    font-size: 28px;
+}
+
+/* Container chứa form */
+.custom-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e1e8f0; /* Đường viền nhẹ */
+}
+
+/* Style cho form */
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Chiều cao của form để căn giữa dọc */
+    margin: 0 auto; /* Đảm bảo căn giữa form trong container cha */
+
+
+}
+
+/* Style cho label */
+.custom-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #3a5a99; /* Màu xanh dương đậm */
+}
+
+/* Style cho input và select */
+.custom-input, .custom-select {
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #d6e4ff; /* Màu xám nhạt */
+    border-radius: 4px;
+    width: 100%;
+    background-color: #f7fbff; /* Màu nền input */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi chiều rộng */
+}
+
+/* Đảm bảo tất cả input và select có chiều cao bằng nhau */
+.custom-input, .custom-select {
+    height: 40px;
+}
+
+/* Khi input hoặc select được focus */
+.custom-input:focus, .custom-select:focus {
+    border-color: #3a5a99; /* Đổi viền thành xanh dương đậm */
+    outline: none;
+}
+
+/* Style cho button */
+.custom-button {
+    background-color: #A6C8FF; /* Xanh dương nhạt */
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Khi hover lên button */
+.custom-button:hover {
+    background-color: #739edb; /* Xanh dương trung bình */
+}
+
+
+
+/* Style cho thông báo lỗi */
+.custom-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Style cho link quay lại */
+.custom-back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-back-link a {
+    color: #3a5a99; /* Xanh dương đậm */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Khi hover lên link */
+.custom-back-link a:hover {
+    text-decoration: underline;
+}
+
+/* MODAL ADMIN MANAGE EMPLOYEE */
+/* Định dạng Modal */
+.modal {
+    display: none; /* Để ẩn mặc định, chỉ hiển thị khi được gọi */
+    position: fixed;
+    z-index: 1; /* Đảm bảo modal xuất hiện trên các nội dung khác */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Màu nền tối mờ phía ngoài */
+    padding-top: 60px;
+}
+
+/* Định dạng nội dung của modal */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút đóng modal */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tiêu đề */
+h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Định dạng các input */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Định dạng trường role */
+input[type="text"][name="role"] {
+    background-color: #f0f0f0; /* Làm mờ nền */
+    opacity: 0.7;
+    pointer-events: none; /* Không cho phép tương tác */
+}
+
+/* Nút lưu */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Điều chỉnh cho responsive */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+/* Nút quay lại */
+.btn-back {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #e0e0e0;
+}
+
+/*THONG BAO*/
+.alert-container {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.alert.error {
+    background-color: red;
+}
+
+.alert.success {
+    background-color: green;
+}

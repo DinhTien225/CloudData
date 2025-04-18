@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm - TravelSky</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="body">
+
+<header class="navbar">
+    <div class="container">
+        <a href="/" class="logo">TravelSky</a>
+    </div>
+</header>
+
+<main class="search-result-container">
+    <h1 class="search-result-title">Kết quả tìm kiếm</h1>
+    <p class="search-result-summary">
+        Chuyến bay từ <strong>{{from_locationname}}</strong> đến <strong>{{to_locationname}}</strong> ngày <strong>{{departure_date}}</strong>
+    </p>
+
+    <ul class="search-results-list">
+        {% for flight, min_price, max_price in results %}
+        <li class="search-result-item">
+            <p>Mã chuyến bay: <strong>{{ flight.maChuyenBay }}</strong></p>
+            <p>Giờ khởi hành: <strong>{{ flight.thoiGianKhoiHanh }}</strong></p>
+            <p>Giờ gian bay: <strong>{{ flight.thoiGianBay }}</strong></p>
+            <p>Giá: <strong>{{ min_price  }} - {{ max_price   }}</strong> VND</p>
+
+            {% set flight_time = flight.thoiGianKhoiHanh %}
+            {% set current_time = current_time %}
+            {% set booking_limit_time = current_time + booking_time_limit * timedelta(hours=1) %}
+            {% if flight_time < booking_limit_time %}
+                <p>Bạn không thể đặt vé này do thời gian đặt trước tối thiểu là {{ booking_time_limit }} giờ</p>
+            {% else %}
+                <a href="{{ url_for('booking', flight_id=flight.id) }}" class="search-btn-primary">Đặt vé</a>
+            {% endif %}
+
+        </li>
+        {% endfor %}
+    </ul>
+<!--    <p class="search-no-results">Không tìm thấy chuyến bay nào phù hợp. Vui lòng thử lại.</p>-->
+
+</main>
+
+<footer>
+    <p>© 2024 TravelSky - Đặt vé máy bay dễ dàng và nhanh chóng</p>
+</footer>
+
+</body>
+</html>

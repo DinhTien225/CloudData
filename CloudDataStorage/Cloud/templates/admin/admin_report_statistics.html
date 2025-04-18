@@ -1,0 +1,93 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<div class="container-fluid mt-4">
+    <h2 class="text-center">Báo Cáo Doanh Thu Theo Tháng</h2>
+    <form method="GET" action="{{ url_for('admin_report_statistics.get_data') }}">
+    <div class="mb-3">
+        <label for="month" class="form-label">Chọn Tháng</label>
+        <select id="month" name="month" class="form-select">
+            {% for m in range(1, 13) %}
+            <option value="{{ m }}" {% if m == month %}selected{% endif %}>Tháng {{ m }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Xem Báo Cáo</button>
+</form>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tuyến Bay</th>
+                        <th>Doanh Thu</th>
+                        <th>Số Lượt Bay</th>
+                        <th>Tỷ Lệ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set total_flights = 0 %}
+                    {% for stat in stats %}
+                    {% set total_flights = total_flights + stat.flight_count %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ stat.route }}</td>
+                        <td>{{ stat.revenue | int | humanize }}</td>
+                        <td>{{ stat.flight_count }}</td>
+                        <td>
+                            {% if total_revenue > 0 %}
+                            {{ (stat.revenue / total_revenue * 100) | round(2) }}%
+                            {% else %}
+                            0%
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- Hiển thị tổng doanh thu ở cuối bảng -->
+                    <tr>
+                        <td colspan="2"><strong>Tổng Doanh Thu:</strong></td>
+                        <td colspan="3">{{ total_revenue | default(0) | int | humanize }}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <canvas id="revenueChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+    const revenueData = {
+        labels: {{ stats | map(attribute='route') | list | tojson }},
+        datasets: [{
+            label: 'Doanh Thu Tuyến Bay',
+            data: {{ stats | map(attribute='revenue') | list | tojson }},
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const revenueChart = new Chart(ctx, {
+        type: 'bar',
+        data: revenueData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<a href="{{ url_for('admin_report_statistics.export_excel', month=month) }}" class="btn btn-success mt-3">
+    Xuất Excel
+</a>
+
+{% endblock %}
