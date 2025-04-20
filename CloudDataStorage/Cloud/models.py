@@ -14,9 +14,10 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = Column(String(50), nullable=False)
     active = Column(Boolean, default=True)
+    paid = Column(Boolean, default=False)
 
     def __str__(self):
-        return f"{self.name} - {self.role.value}"
+        return f"{self.name} "
 
 # Tạo cơ sở dữ liệu và thêm sân bay mặc định
 if __name__ == "__main__":

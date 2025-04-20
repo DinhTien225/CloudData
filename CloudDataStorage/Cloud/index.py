@@ -1,5 +1,8 @@
+import base64
+import time
+import io
 
-
+import qrcode
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 from flask_login import logout_user, login_user, current_user
 import cloudinary.uploader
@@ -57,6 +60,30 @@ def register():
 def logout():
     logout_user()
     return redirect('/')  # Quay về trang chủ sau khi đăng xuất
+
+
+@app.route("/pay")
+def pay():
+    zalo_dao = dao.ZaloPayDAO()
+
+    # Tạo mã giao dịch duy nhất
+    app_trans_id = f"{time.strftime('%y%m%d')}_{int(time.time())}"
+
+    # Gọi API để lấy URL thanh toán
+    amount = 100000  # ví dụ: 100,000 VND
+    redirect_url = "http://127.0.0.1:5000/thankyou"
+    payment_url = zalo_dao.create_order(amount, redirect_url, app_trans_id)
+
+    if payment_url.startswith("Error"):
+        return payment_url
+
+    # Tạo mã QR từ payment_url
+    qr = qrcode.make(payment_url)
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    return redirect(payment_url)
 
 if __name__ == "__main__":
     with app.app_context():
